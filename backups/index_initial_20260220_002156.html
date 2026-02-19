@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Sephira 733 — Agence Digital Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #08080f;
+            --bg-section: #0c0c1a;
+            --bg-card: #12122a;
+            --purple-light: #c77dff;
+            --purple-mid: #9d4edd;
+            --purple-dark: #7b2cbf;
+            --blue-accent: #3a86ff;
+            --blue-deep: #2563eb;
+            --pink-accent: #e040fb;
+            --pink-hot: #ff006e;
+            --white: #ffffff;
+            --gray-100: #e8e8f0;
+            --gray-200: #c0c0d0;
+            --gray-300: #8888a0;
+            --gray-400: #555570;
+            --green-whatsapp: #25D366;
+            --gradient-main: linear-gradient(135deg, #3a86ff 0%, #9d4edd 50%, #e040fb 100%);
+            --gradient-card: linear-gradient(160deg, #161633 0%, #0e0e22 100%);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-glow: 0 0 60px rgba(157, 78, 221, 0.15);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ========= FLOATING ORBS ========= */
+        .orbs-fixed {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(100px); opacity: 0.22;
+        }
+        .orb-1 { width: 500px; height: 500px; background: var(--purple-mid); top: -150px; right: -100px; animation: fA 20s ease-in-out infinite; }
+        .orb-2 { width: 400px; height: 400px; background: var(--blue-accent); top: 30%; left: -200px; animation: fB 25s ease-in-out infinite; }
+        .orb-3 { width: 350px; height: 350px; background: var(--pink-accent); bottom: 10%; right: -100px; animation: fC 18s ease-in-out infinite; }
+        .orb-4 { width: 300px; height: 300px; background: #6c63ff; top: 60%; left: 40%; animation: fD 22s ease-in-out infinite; }
+        .orb-5 { width: 250px; height: 250px; background: var(--pink-hot); top: 10%; left: 50%; animation: fE 16s ease-in-out infinite; opacity: 0.13; }
+
+        @keyframes fA { 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(-80px,60px) scale(1.1)} 50%{transform:translate(-40px,120px) scale(.95)} 75%{transform:translate(60px,40px) scale(1.05)} }
+        @keyframes fB { 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(100px,-40px) scale(1.08)} 50%{transform:translate(60px,80px) scale(.92)} 75%{transform:translate(-20px,40px) scale(1.04)} }
+        @keyframes fC { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-60px,-80px) scale(1.12)} 66%{transform:translate(40px,-40px) scale(.9)} }
+        @keyframes fD { 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(-50px,-60px) scale(1.06)} 50%{transform:translate(80px,20px) scale(.94)} 75%{transform:translate(30px,-80px) scale(1.1)} }
+        @keyframes fE { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-100px,60px) scale(1.15)} }
+
+        /* ========= FLOATING SHAPES ========= */
+        .shapes-fixed {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1; overflow: hidden;
+        }
+        .shape { position: absolute; opacity: 0.07; }
+        .sh-ring {
+            width: 120px; height: 120px; border: 2px solid var(--purple-light);
+            border-radius: 50%; top: 15%; left: 8%;
+            animation: spinF 30s linear infinite;
+        }
+        .sh-diamond {
+            width: 60px; height: 60px; background: var(--gradient-main);
+            top: 45%; right: 12%; transform: rotate(45deg); border-radius: 4px;
+            animation: diaF 14s ease-in-out infinite;
+        }
+        .sh-tri {
+            width: 0; height: 0;
+            border-left: 30px solid transparent; border-right: 30px solid transparent;
+            border-bottom: 52px solid var(--pink-accent);
+            top: 25%; right: 25%; opacity: 0.05;
+            animation: triF 20s ease-in-out infinite;
+        }
+        .sh-cross {
+            width: 40px; height: 40px; top: 70%; left: 15%;
+            animation: croF 18s ease-in-out infinite;
+        }
+        .sh-cross::before, .sh-cross::after {
+            content: ''; position: absolute; background: var(--blue-accent); border-radius: 2px;
+        }
+        .sh-cross::before { width: 100%; height: 3px; top: 50%; transform: translateY(-50%); }
+        .sh-cross::after { width: 3px; height: 100%; left: 50%; transform: translateX(-50%); }
+
+        @keyframes spinF { 0%{transform:rotate(0) translateY(0)} 50%{transform:rotate(180deg) translateY(-30px)} 100%{transform:rotate(360deg) translateY(0)} }
+        @keyframes diaF { 0%,100%{transform:rotate(45deg) translate(0,0)} 50%{transform:rotate(45deg) translate(-20px,-30px)} }
+        @keyframes triF { 0%,100%{transform:translate(0,0) rotate(0)} 33%{transform:translate(-15px,-20px) rotate(10deg)} 66%{transform:translate(10px,-10px) rotate(-5deg)} }
+        @keyframes croF { 0%,100%{transform:rotate(0) translate(0,0)} 50%{transform:rotate(90deg) translate(20px,-20px)} }
+
+        #particles-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+        }
+
+        /* ========= CONTENT ========= */
+        .content-wrapper { position: relative; z-index: 2; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ========= NAVBAR ========= */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 16px 0;
+            background: rgba(8,8,15,0.7);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+        .navbar-logo img { height: 40px; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { font-size: .82rem; font-weight: 500; color: var(--gray-200); transition: var(--transition); letter-spacing: .5px; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta {
+            padding: 10px 24px; background: var(--gradient-main); border: none;
+            border-radius: 50px; color: var(--white); font-family: 'Poppins',sans-serif;
+            font-size: .82rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(157,78,221,.4); }
+        .mob-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .mob-toggle span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+
+        /* ========= HERO ========= */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 120px 24px 80px; position: relative;
+        }
+        .hero-content { max-width: 800px; }
+        .hero-badge {
+            display: inline-block; padding: 8px 20px;
+            background: rgba(157,78,221,.1); border: 1px solid rgba(157,78,221,.3);
+            border-radius: 50px; font-size: .78rem; font-weight: 500;
+            color: var(--purple-light); margin-bottom: 32px;
+            letter-spacing: 1px; text-transform: uppercase;
+            animation: fadeInDown 1s ease-out;
+        }
+        .hero-logo {
+            width: 500px; max-width: 90%; margin: 0 auto 32px;
+            animation: fadeInUp 1s ease-out .2s both;
+        }
+        .hero-tagline {
+            font-size: clamp(1rem,2.5vw,1.3rem); color: var(--gray-200);
+            font-weight: 300; margin-bottom: 16px;
+            animation: fadeInUp 1s ease-out .4s both;
+        }
+        .hero-tagline strong { color: var(--white); font-weight: 600; }
+        .hero-sub {
+            font-size: clamp(.85rem,2vw,1rem); color: var(--gray-300);
+            margin-bottom: 48px; animation: fadeInUp 1s ease-out .6s both;
+        }
+        .hero-btns {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out .8s both;
+        }
+        .btn-p {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 36px; background: var(--gradient-main); border: none;
+            border-radius: 50px; color: var(--white); font-family: 'Poppins',sans-serif;
+            font-size: .95rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .btn-p::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+            transition: left .5s;
+        }
+        .btn-p:hover::before { left: 100%; }
+        .btn-p:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(157,78,221,.4); }
+        .btn-s {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 36px; background: transparent;
+            border: 1px solid rgba(255,255,255,.2); border-radius: 50px;
+            color: var(--white); font-family: 'Poppins',sans-serif;
+            font-size: .95rem; font-weight: 500; cursor: pointer; transition: var(--transition);
+        }
+        .btn-s:hover { border-color: var(--purple-light); background: rgba(157,78,221,.08); transform: translateY(-3px); }
+
+        .scroll-ind {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        .scroll-ind svg { width: 24px; height: 24px; stroke: var(--gray-400); }
+
+        @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0)} 40%{transform:translateX(-50%) translateY(-8px)} 60%{transform:translateX(-50%) translateY(-4px)} }
+        @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ========= SECTIONS GENERIC ========= */
+        section { padding: 100px 0; position: relative; }
+        .sec-header { text-align: center; margin-bottom: 64px; }
+        .sec-label {
+            display: inline-block; font-size: .72rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 3px; color: var(--purple-light); margin-bottom: 16px;
+        }
+        .sec-title { font-size: clamp(2rem,4vw,3rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+        .grad-text { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .sec-sub { font-size: 1rem; color: var(--gray-300); max-width: 600px; margin: 0 auto; font-weight: 300; }
+        .divider { width: 80px; height: 3px; background: var(--gradient-main); border-radius: 3px; margin: 24px auto 0; }
+
+        /* ========= SHOWCASE — FLYERS GALLERY ========= */
+        .showcase-section { background: var(--bg-section); overflow: hidden; }
+
+        .showcase-marquee {
+            display: flex; gap: 24px; padding: 20px 0;
+            animation: marquee 40s linear infinite;
+            width: max-content;
+        }
+        .showcase-marquee:hover { animation-play-state: paused; }
+        .showcase-marquee-reverse { animation-direction: reverse; animation-duration: 35s; }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .showcase-item {
+            flex-shrink: 0; width: 220px; height: 390px;
+            border-radius: var(--radius-md); overflow: hidden;
+            border: 1px solid rgba(255,255,255,.06);
+            transition: var(--transition); position: relative;
+            background: var(--gradient-card);
+        }
+        .showcase-item:hover {
+            transform: scale(1.05); border-color: var(--purple-mid);
+            box-shadow: 0 20px 60px rgba(157,78,221,.25);
+            z-index: 10;
+        }
+        .showcase-item img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .showcase-placeholder {
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #1a1a3a 0%, #2a1a4a 50%, #1a2a4a 100%);
+            text-align: center; padding: 20px;
+        }
+        .showcase-placeholder .icon { font-size: 3rem; margin-bottom: 12px; opacity: .5; }
+        .showcase-placeholder .label { font-size: .75rem; color: var(--gray-300); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Scattered flyers in sections */
+        .scattered-flyer {
+            position: absolute; width: 160px; border-radius: 12px;
+            overflow: hidden; opacity: .12; pointer-events: none;
+            border: 1px solid rgba(255,255,255,.04);
+            transition: opacity .3s;
+        }
+        .scattered-flyer img { width: 100%; height: auto; }
+
+        /* ========= ABOUT ========= */
+        .about-section { background: var(--bg-section); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .about-text p { color: var(--gray-200); margin-bottom: 20px; font-size: .95rem; }
+        .about-text strong { color: var(--white); }
+        .about-img { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; background: var(--gradient-card); }
+        .about-img .ph {
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; opacity: .4;
+            background: linear-gradient(135deg, #1a1a3a 0%, #2a1a4a 50%, #1a2a4a 100%);
+        }
+        .highlights { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+        .hl-card {
+            text-align: center; padding: 32px 16px;
+            background: var(--gradient-card); border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,.05); transition: var(--transition);
+        }
+        .hl-card:hover { border-color: rgba(157,78,221,.3); transform: translateY(-4px); }
+        .hl-card .ico { font-size: 2rem; margin-bottom: 12px; }
+        .hl-card h4 { font-size: .9rem; font-weight: 600; margin-bottom: 8px; }
+        .hl-card p { font-size: .8rem; color: var(--gray-300); }
+
+        /* ========= SERVICES ========= */
+        .svc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 24px; }
+        .svc-card {
+            padding: 40px 28px; background: var(--gradient-card);
+            border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,.05);
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .svc-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--gradient-main); transform: scaleX(0); transition: transform .4s; transform-origin: left;
+        }
+        .svc-card:hover::before { transform: scaleX(1); }
+        .svc-card:hover { border-color: rgba(157,78,221,.2); transform: translateY(-6px); box-shadow: var(--shadow-glow); }
+        .svc-icon {
+            width: 56px; height: 56px; border-radius: var(--radius-sm);
+            background: rgba(157,78,221,.1); display: flex; align-items: center;
+            justify-content: center; font-size: 1.5rem; margin-bottom: 20px;
+        }
+        .svc-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+        .svc-card p { font-size: .85rem; color: var(--gray-300); }
+
+        /* ========= FLYER PACKS — PRICING AGGRESSIVE ========= */
+        .flyer-packs-section {
+            background: var(--bg-dark);
+            position: relative;
+        }
+        .flyer-packs-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(58,134,255,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .flyer-pack-grid {
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+        }
+
+        .flyer-pack {
+            background: var(--gradient-card); border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,.06); padding: 0;
+            display: flex; flex-direction: column; transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .flyer-pack:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+        .flyer-pack.best {
+            border-color: var(--purple-mid);
+            background: linear-gradient(160deg, #1e1050 0%, #12122a 60%);
+        }
+        .flyer-pack.best::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--gradient-main);
+        }
+        .flyer-pack.best .fp-ribbon {
+            position: absolute; top: 20px; right: -35px;
+            background: var(--gradient-main); color: var(--white);
+            font-size: .65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; padding: 6px 40px;
+            transform: rotate(45deg);
+        }
+
+        .fp-head {
+            padding: 36px 32px 24px; text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,.04);
+        }
+        .fp-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+        .fp-name { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+        .fp-desc { font-size: .8rem; color: var(--gray-300); }
+        .fp-price-block { padding: 24px 32px; text-align: center; }
+        .fp-price {
+            font-size: 3rem; font-weight: 900;
+            background: var(--gradient-main); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .fp-price-unit { font-size: .85rem; color: var(--gray-300); }
+        .fp-per-unit { font-size: .75rem; color: var(--gray-400); margin-top: 4px; }
+        .fp-savings {
+            display: inline-block; margin-top: 8px;
+            padding: 4px 14px; background: rgba(37,211,102,.12);
+            border: 1px solid rgba(37,211,102,.3); border-radius: 50px;
+            font-size: .7rem; font-weight: 600; color: #25D366;
+        }
+
+        .fp-body { padding: 0 32px 32px; flex: 1; }
+        .fp-features { list-style: none; }
+        .fp-features li {
+            padding: 10px 0; font-size: .85rem; color: var(--gray-200);
+            display: flex; align-items: flex-start; gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,.03);
+        }
+        .fp-features li:last-child { border-bottom: none; }
+        .fp-features li::before { content: '✓'; color: var(--purple-light); font-weight: 700; flex-shrink: 0; }
+
+        .fp-foot { padding: 0 32px 32px; }
+        .fp-btn {
+            display: block; width: 100%; text-align: center; padding: 14px;
+            border-radius: 50px; font-family: 'Poppins',sans-serif;
+            font-size: .9rem; font-weight: 600; cursor: pointer; transition: var(--transition); border: none;
+        }
+        .fp-btn-fill { background: var(--gradient-main); color: var(--white); }
+        .fp-btn-fill:hover { box-shadow: 0 8px 30px rgba(157,78,221,.4); transform: translateY(-2px); }
+        .fp-btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.2); color: var(--white); }
+        .fp-btn-ghost:hover { border-color: var(--purple-light); background: rgba(157,78,221,.08); }
+
+        /* ========= AGENCY PACKS (Starter / Premium / Ultimate) ========= */
+        .packs-section { background: var(--bg-section); }
+        .packs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; align-items: stretch; }
+
+        .pack-card {
+            background: var(--gradient-card); border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,.06); padding: 40px 32px;
+            display: flex; flex-direction: column; transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .pack-card.feat { border-color: var(--purple-mid); background: linear-gradient(160deg, #1e1050 0%, #12122a 60%); }
+        .pack-card.feat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-main); }
+        .pack-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+
+        .pk-badge {
+            display: inline-block; padding: 6px 16px;
+            background: rgba(157,78,221,.15); border: 1px solid rgba(157,78,221,.3);
+            border-radius: 50px; font-size: .68rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; color: var(--purple-light);
+            margin-bottom: 20px; width: fit-content;
+        }
+        .pack-card.feat .pk-badge { background: var(--gradient-main); border: none; color: var(--white); }
+        .pk-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+        .pk-target { font-size: .78rem; color: var(--gray-300); margin-bottom: 24px; line-height: 1.5; }
+        .pk-price { font-size: 2.4rem; font-weight: 800; margin-bottom: 4px; }
+        .pk-price .cur { font-size: 1.2rem; }
+        .pk-price-sub { font-size: .78rem; color: var(--gray-300); margin-bottom: 32px; }
+        .pk-feats { list-style: none; flex: 1; margin-bottom: 32px; }
+        .pk-feats li { padding: 8px 0; font-size: .83rem; color: var(--gray-200); display: flex; align-items: flex-start; gap: 10px; }
+        .pk-feats li::before { content: '✓'; color: var(--purple-light); font-weight: 700; flex-shrink: 0; }
+        .pk-cat {
+            font-size: .68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--blue-accent); margin-top: 16px; margin-bottom: 4px;
+            display: block; padding: 8px 0;
+        }
+        .pk-cat::before { content: none !important; }
+        .pk-btn {
+            display: block; width: 100%; text-align: center; padding: 14px;
+            border-radius: 50px; font-family: 'Poppins',sans-serif;
+            font-size: .9rem; font-weight: 600; cursor: pointer; transition: var(--transition); border: none;
+        }
+        .pk-btn-fill { background: var(--gradient-main); color: var(--white); }
+        .pk-btn-fill:hover { box-shadow: 0 8px 30px rgba(157,78,221,.4); transform: translateY(-2px); }
+        .pk-btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.2); color: var(--white); }
+        .pk-btn-ghost:hover { border-color: var(--purple-light); background: rgba(157,78,221,.08); }
+
+        .pack-discount {
+            margin-top: 40px; padding: 20px;
+            background: rgba(157,78,221,.08); border: 1px solid rgba(157,78,221,.2);
+            border-radius: var(--radius-md); text-align: center;
+        }
+        .pack-discount p { font-size: .85rem; color: var(--gray-200); }
+        .pack-discount strong { color: var(--purple-light); }
+
+        /* ========= TARIFS TABLE ========= */
+        .pricing-wrap { overflow-x: auto; }
+        .pricing-tbl {
+            width: 100%; border-collapse: separate; border-spacing: 0;
+            background: var(--gradient-card); border-radius: var(--radius-lg);
+            overflow: hidden; border: 1px solid rgba(255,255,255,.06);
+        }
+        .pricing-tbl thead th {
+            padding: 20px 24px; font-size: .78rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; text-align: left;
+            background: rgba(157,78,221,.08); border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .pricing-tbl thead th:last-child { text-align: right; }
+        .pricing-tbl tbody tr { transition: var(--transition); }
+        .pricing-tbl tbody tr:hover { background: rgba(157,78,221,.05); }
+        .pricing-tbl tbody td {
+            padding: 18px 24px; border-bottom: 1px solid rgba(255,255,255,.04); vertical-align: top;
+        }
+        .pricing-tbl tbody td:last-child { text-align: right; font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+        .pricing-tbl .sn { font-weight: 600; font-size: .95rem; margin-bottom: 4px; }
+        .pricing-tbl .sd { font-size: .78rem; color: var(--gray-300); }
+        .ptag { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        /* ========= WHY US ========= */
+        .why-section { background: var(--bg-section); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 28px; }
+        .why-card {
+            padding: 36px 24px; background: var(--gradient-card);
+            border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,.05);
+            text-align: center; transition: var(--transition);
+        }
+        .why-card:hover { border-color: rgba(157,78,221,.25); transform: translateY(-6px); box-shadow: var(--shadow-glow); }
+        .why-ico {
+            width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 50%;
+            background: rgba(157,78,221,.1); display: flex; align-items: center;
+            justify-content: center; font-size: 1.6rem;
+        }
+        .why-card h3 { font-size: .92rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .5px; }
+        .why-card p { font-size: .82rem; color: var(--gray-300); line-height: 1.6; }
+
+        /* ========= CTA ========= */
+        .cta-section { padding: 120px 0; text-align: center; position: relative; }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(157,78,221,.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-content { position: relative; z-index: 1; }
+        .cta-title { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; line-height: 1.15; margin-bottom: 24px; }
+        .cta-sub { font-size: 1.1rem; color: var(--gray-200); margin-bottom: 48px; font-weight: 300; }
+        .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-wa {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 36px; background: #25D366; border: none;
+            border-radius: 50px; color: var(--white); font-family: 'Poppins',sans-serif;
+            font-size: .95rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+        .btn-wa:hover { background: #1ebe5d; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,211,102,.3); }
+
+        /* ========= FOOTER ========= */
+        .footer {
+            padding: 60px 0 32px; border-top: 1px solid rgba(255,255,255,.05);
+            background: rgba(0,0,0,.3);
+        }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+        .footer-logo img { height: 36px; opacity: .7; }
+        .footer-txt { font-size: .8rem; color: var(--gray-400); }
+        .footer-links { display: flex; gap: 24px; list-style: none; }
+        .footer-links a { font-size: .8rem; color: var(--gray-300); transition: var(--transition); }
+        .footer-links a:hover { color: var(--purple-light); }
+
+        /* ========= SCROLL REVEAL ========= */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .rd1 { transition-delay: .1s; } .rd2 { transition-delay: .2s; } .rd3 { transition-delay: .3s; }
+        .rd4 { transition-delay: .4s; } .rd5 { transition-delay: .5s; }
+
+        /* ========= RESPONSIVE ========= */
+        @media(max-width:1024px) {
+            .packs-grid, .flyer-pack-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+        @media(max-width:768px) {
+            section { padding: 72px 0; }
+            .nav-links, .nav-cta { display: none; }
+            .mob-toggle { display: flex; }
+            .highlights { grid-template-columns: 1fr; }
+            .svc-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
+            .hero-logo { width: 320px; }
+            .showcase-item { width: 170px; height: 300px; }
+        }
+        @media(max-width:480px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .hero-btns, .cta-btns { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== FLOATING BG ===== -->
+    <div class="orbs-fixed">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
+    </div>
+    <div class="shapes-fixed">
+        <div class="shape sh-ring"></div>
+        <div class="shape sh-diamond"></div>
+        <div class="shape sh-cross"></div>
+        <div class="shape sh-tri"></div>
+    </div>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ===== CONTENT ===== -->
+    <div class="content-wrapper">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="navbar-logo">
+                    <img src="https://www.genspark.ai/api/files/s/koiPwmMn" alt="Maison Sephira 733">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#showcase">Réalisations</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#flyer-packs">Flyers</a></li>
+                    <li><a href="#packs">Packs Agence</a></li>
+                    <li><a href="#tarifs">Tarifs</a></li>
+                    <li><a href="#pourquoi">Pourquoi nous</a></li>
+                </ul>
+                <button class="nav-cta" onclick="window.open('https://wa.me/33601490965','_blank')">Contactez-nous</button>
+                <button class="mob-toggle" id="mobToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <span class="hero-badge">Agence Digital Marketing</span>
+                <img src="https://www.genspark.ai/api/files/s/koiPwmMn" alt="Maison Sephira 733" class="hero-logo">
+                <p class="hero-tagline">Spécialisée en <strong>SEO/SEA</strong> & <strong>Design Premium</strong></p>
+                <p class="hero-sub">Flyers, sites web, branding, publicité — Des résultats concrets à des prix agressifs</p>
+                <div class="hero-btns">
+                    <a href="#flyer-packs" class="btn-p">Nos packs flyers dès 30€ →</a>
+                    <a href="#showcase" class="btn-s">Voir nos créations</a>
+                </div>
+            </div>
+            <div class="scroll-ind">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+        </section>
+
+        <!-- ===== SHOWCASE — SCROLLING FLYER GALLERY ===== -->
+        <section class="showcase-section" id="showcase">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">Notre portfolio</span>
+                    <h2 class="sec-title">Nos <span class="grad-text">Réalisations</span></h2>
+                    <p class="sec-sub">Quelques exemples de flyers et visuels créés pour nos clients</p>
+                    <div class="divider"></div>
+                </div>
+            </div>
+
+            <!-- ROW 1 — auto-scroll left -->
+            <div style="overflow:hidden; margin-bottom:24px;">
+                <div class="showcase-marquee" id="marquee1">
+                    <!-- PLACEHOLDERS — Remplace les src par tes vrais flyers -->
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🍕</span><span class="label">Flyer Pizzeria</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">💪</span><span class="label">Flyer Salle de Sport</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">💈</span><span class="label">Flyer Barbershop</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🍔</span><span class="label">Flyer Fast-Food</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">☕</span><span class="label">Flyer Coffee Shop</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🏎️</span><span class="label">Flyer Garage Auto</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">📱</span><span class="label">Flyer Réparation</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🎉</span><span class="label">Flyer Événement</span></div></div>
+                    <!-- DUPLICATE for infinite loop -->
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🍕</span><span class="label">Flyer Pizzeria</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">💪</span><span class="label">Flyer Salle de Sport</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">💈</span><span class="label">Flyer Barbershop</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🍔</span><span class="label">Flyer Fast-Food</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">☕</span><span class="label">Flyer Coffee Shop</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🏎️</span><span class="label">Flyer Garage Auto</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">📱</span><span class="label">Flyer Réparation</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🎉</span><span class="label">Flyer Événement</span></div></div>
+                </div>
+            </div>
+
+            <!-- ROW 2 — auto-scroll right (reverse) -->
+            <div style="overflow:hidden;">
+                <div class="showcase-marquee showcase-marquee-reverse" id="marquee2">
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🍽️</span><span class="label">Menu Restaurant</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🛍️</span><span class="label">Flyer Boutique</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🎵</span><span class="label">Flyer Soirée</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🏋️</span><span class="label">Promo Fitness</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🧁</span><span class="label">Flyer Pâtisserie</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🚗</span><span class="label">Flyer Location</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">💅</span><span class="label">Flyer Beauté</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🏠</span><span class="label">Flyer Immobilier</span></div></div>
+                    <!-- DUPLICATE -->
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🍽️</span><span class="label">Menu Restaurant</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🛍️</span><span class="label">Flyer Boutique</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🎵</span><span class="label">Flyer Soirée</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🏋️</span><span class="label">Promo Fitness</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🧁</span><span class="label">Flyer Pâtisserie</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🚗</span><span class="label">Flyer Location</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">💅</span><span class="label">Flyer Beauté</span></div></div>
+                    <div class="showcase-item"><div class="showcase-placeholder"><span class="icon">🏠</span><span class="label">Flyer Immobilier</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">Qui sommes-nous</span>
+                    <h2 class="sec-title">Notre <span class="grad-text">Histoire</span></h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <p>Fondée en 2024, la <strong>Maison Séphira 733</strong> est une agence de marketing digital spécialisée en SEO, SEA et branding premium.</p>
+                        <p>Nous accompagnons des marques et des entrepreneurs dans la structuration, la croissance et la performance de leur présence en ligne.</p>
+                        <p>Depuis notre lancement, nous avons aidé de nombreux clients à améliorer leur visibilité grâce au SEO, générer des résultats mesurables via le SEA, et concevoir des sites web à forte identité, pensés pour convertir et durer.</p>
+                        <p>Créée par <strong>Wafa</strong> et <strong>Meyghane</strong>, l'agence s'appuie sur une équipe de cinq personnes réunissant stratégie, création et performance — avec une exigence commune : des résultats concrets et une image premium.</p>
+                    </div>
+                    <div class="about-img reveal rd2">
+                        <div class="ph">✦</div>
+                    </div>
+                </div>
+                <div class="highlights reveal">
+                    <div class="hl-card rd1"><div class="ico">🎯</div><h4>SEO & Visibilité</h4><p>Positionnement organique durable sur les moteurs de recherche</p></div>
+                    <div class="hl-card rd2"><div class="ico">📈</div><h4>SEA & Performance</h4><p>Résultats mesurables et ROI optimisé via la publicité payante</p></div>
+                    <div class="hl-card rd3"><div class="ico">💎</div><h4>Design Premium</h4><p>Visuels, flyers et identités créés avec une exigence de qualité maximale</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES ===== -->
+        <section id="services">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">Ce que nous faisons</span>
+                    <h2 class="sec-title">Nos <span class="grad-text">Services</span></h2>
+                    <p class="sec-sub">Du design graphique au référencement, en passant par les sites web et la vidéo</p>
+                    <div class="divider"></div>
+                </div>
+                <div class="svc-grid">
+                    <div class="svc-card reveal rd1"><div class="svc-icon">📄</div><h3>Flyers & Visuels</h3><p>Flyers Snapchat, Instagram, print — Des visuels qui claquent, livrés en 24h. À partir de 30€.</p></div>
+                    <div class="svc-card reveal rd2"><div class="svc-icon">🌐</div><h3>Création de site web</h3><p>Sites vitrines et e-commerce optimisés, responsives et pensés pour convertir.</p></div>
+                    <div class="svc-card reveal rd3"><div class="svc-icon">✨</div><h3>Branding Premium</h3><p>Logo, charte graphique, book de marque — Une identité visuelle complète et mémorable.</p></div>
+                    <div class="svc-card reveal rd1"><div class="svc-icon">🔍</div><h3>Référencement SEO</h3><p>Audit technique, optimisation on-page, stratégie de contenu et mots-clés stratégiques.</p></div>
+                    <div class="svc-card reveal rd2"><div class="svc-icon">📢</div><h3>SEA & Campagnes Ads</h3><p>Google Ads, Meta Ads — Campagnes publicitaires ciblées et optimisées pour le ROI.</p></div>
+                    <div class="svc-card reveal rd3"><div class="svc-icon">🎬</div><h3>Montage Vidéo</h3><p>Réels, stories, pubs — Contenus vidéo percutants pour vos réseaux sociaux.</p></div>
+                    <div class="svc-card reveal rd1"><div class="svc-icon">🍽️</div><h3>Menus & Packaging</h3><p>Menus design, packaging produits, mockups réalistes pour valoriser votre image.</p></div>
+                    <div class="svc-card reveal rd2"><div class="svc-icon">📱</div><h3>Cartes NFC & QR Codes</h3><p>Cartes Google Avis NFC + QR codes personnalisés pour booster vos avis en ligne.</p></div>
+                    <div class="svc-card reveal rd3"><div class="svc-icon">📍</div><h3>Google My Business</h3><p>Création et optimisation complète de votre fiche Google pour dominer la recherche locale.</p></div>
+                    <div class="svc-card reveal rd1"><div class="svc-icon">📱</div><h3>Stratégie Réseaux Sociaux</h3><p>Calendrier éditorial, ligne éditoriale, templates — On structure votre présence sociale.</p></div>
+                    <div class="svc-card reveal rd2"><div class="svc-icon">🛒</div><h3>Trade Marketing</h3><p>Stratégies terrain pour maximiser votre visibilité et vos ventes en point de vente.</p></div>
+                    <div class="svc-card reveal rd3"><div class="svc-icon">💼</div><h3>Plaquettes & Factures</h3><p>Documents commerciaux professionnels : plaquettes, cartes de visite, factures design.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FLYER PACKS — PRIX AGRESSIFS ===== -->
+        <section class="flyer-packs-section" id="flyer-packs">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">Offre spéciale</span>
+                    <h2 class="sec-title">Packs <span class="grad-text">Flyers</span></h2>
+                    <p class="sec-sub">Des visuels professionnels à des prix imbattables — Livrés en 24-48h</p>
+                    <div class="divider"></div>
+                </div>
+                <div class="flyer-pack-grid">
+                    <!-- 1 FLYER -->
+                    <div class="flyer-pack reveal rd1">
+                        <div class="fp-head">
+                            <div class="fp-emoji">🎯</div>
+                            <h3 class="fp-name">1 Flyer</h3>
+                            <p class="fp-desc">Prix d'appel — Idéal pour tester</p>
+                        </div>
+                        <div class="fp-price-block">
+                            <div class="fp-price">30<span style="font-size:1.2rem;">€</span></div>
+                            <p class="fp-price-unit">Visuel unique</p>
+                        </div>
+                        <div class="fp-body">
+                            <ul class="fp-features">
+                                <li>1 visuel professionnel (format story 9:16 ou print)</li>
+                                <li>Direction artistique sur-mesure</li>
+                                <li>Vos couleurs, votre logo, vos infos</li>
+                                <li>1 aller-retour de modification inclus</li>
+                                <li>Livraison HD en 24-48h</li>
+                            </ul>
+                        </div>
+                        <div class="fp-foot">
+                            <a href="https://wa.me/33601490965?text=Bonjour, je suis intéressé par 1 flyer à 30€" class="fp-btn fp-btn-ghost" target="_blank">Commander</a>
+                        </div>
+                    </div>
+
+                    <!-- PACK 3 FLYERS -->
+                    <div class="flyer-pack best reveal rd2">
+                        <span class="fp-ribbon">BEST SELLER</span>
+                        <div class="fp-head">
+                            <div class="fp-emoji">🔥</div>
+                            <h3 class="fp-name">Pack 3 Flyers</h3>
+                            <p class="fp-desc">Le meilleur rapport qualité/prix</p>
+                        </div>
+                        <div class="fp-price-block">
+                            <div class="fp-price">75<span style="font-size:1.2rem;">€</span></div>
+                            <p class="fp-price-unit">Soit 25€/flyer</p>
+                            <p class="fp-per-unit">au lieu de 90€ en unité</p>
+                            <span class="fp-savings">Vous économisez 15€</span>
+                        </div>
+                        <div class="fp-body">
+                            <ul class="fp-features">
+                                <li>3 visuels professionnels différents</li>
+                                <li>Direction artistique cohérente ou variée</li>
+                                <li>Formats adaptés (Snap, Insta, print)</li>
+                                <li>2 allers-retours de modification inclus</li>
+                                <li>Livraison HD en 24-48h</li>
+                                <li>Idéal pour tester plusieurs styles</li>
+                            </ul>
+                        </div>
+                        <div class="fp-foot">
+                            <a href="https://wa.me/33601490965?text=Bonjour, je suis intéressé par le pack 3 flyers à 75€" class="fp-btn fp-btn-fill" target="_blank">Commander le pack</a>
+                        </div>
+                    </div>
+
+                    <!-- PACK 8 FLYERS -->
+                    <div class="flyer-pack reveal rd3">
+                        <div class="fp-head">
+                            <div class="fp-emoji">💎</div>
+                            <h3 class="fp-name">Pack 8 Flyers</h3>
+                            <p class="fp-desc">Volume — Pour ceux qui veulent scaler</p>
+                        </div>
+                        <div class="fp-price-block">
+                            <div class="fp-price">200<span style="font-size:1.2rem;">€</span></div>
+                            <p class="fp-price-unit">Soit 25€/flyer</p>
+                            <p class="fp-per-unit">au lieu de 240€ en unité</p>
+                            <span class="fp-savings">Vous économisez 40€</span>
+                        </div>
+                        <div class="fp-body">
+                            <ul class="fp-features">
+                                <li>8 visuels professionnels différents</li>
+                                <li>Direction artistique premium complète</li>
+                                <li>Tous formats (stories, posts, print A5/A4)</li>
+                                <li>3 allers-retours de modification inclus</li>
+                                <li>Livraison HD + fichiers sources</li>
+                                <li>Couverture complète de vos promos du mois</li>
+                                <li>Parfait pour les événements récurrents</li>
+                            </ul>
+                        </div>
+                        <div class="fp-foot">
+                            <a href="https://wa.me/33601490965?text=Bonjour, je suis intéressé par le pack 8 flyers à 200€" class="fp-btn fp-btn-ghost" target="_blank">Commander le pack</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FLYER DESIGN PREMIUM -->
+                <div class="reveal" style="margin-top:40px; padding:32px; background:var(--gradient-card); border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.06); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
+                    <div>
+                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Flyer Design Premium</h3>
+                        <p style="color:var(--gray-300); font-size:.88rem;">Flyer ultra-travaillé avec retouches avancées, composition personnalisée et DA haut de gamme. Pour les commerces qui veulent le meilleur.</p>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:2rem; font-weight:800;" class="grad-text">50 - 100€</div>
+                        <a href="https://wa.me/33601490965?text=Bonjour, je souhaite un flyer design premium" class="fp-btn fp-btn-fill" style="margin-top:12px; display:inline-block; padding:12px 28px;" target="_blank">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PACKS AGENCE (Starter / Premium / Ultimate) ===== -->
+        <section class="packs-section" id="packs">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">Solutions complètes</span>
+                    <h2 class="sec-title">Nos <span class="grad-text">Packs Agence</span></h2>
+                    <p class="sec-sub">Des formules tout-en-un pour structurer votre présence digitale de A à Z</p>
+                    <div class="divider"></div>
+                </div>
+                <div class="packs-grid">
+                    <!-- STARTER -->
+                    <div class="pack-card reveal rd1">
+                        <span class="pk-badge">Starter</span>
+                        <h3 class="pk-name">Starter</h3>
+                        <p class="pk-target">Lancement d'activité — Vous démarrez et vous voulez une base solide</p>
+                        <p class="pk-price">1 490<span class="cur">€</span></p>
+                        <p class="pk-price-sub">Paiement unique</p>
+                        <ul class="pk-feats">
+                            <li class="pk-cat">Branding Essentiel</li>
+                            <li>Logo professionnel (3 propositions)</li>
+                            <li>Charte graphique basique (couleurs, typographies)</li>
+                            <li>Cartes de visite (design)</li>
+                            <li class="pk-cat">Site Web Vitrine</li>
+                            <li>Site 5 pages (Accueil, Services, À propos, Contact, Mentions légales)</li>
+                            <li>Responsive (mobile/tablette)</li>
+                            <li>Formulaire de contact</li>
+                            <li>Hébergement 1 an inclus</li>
+                            <li class="pk-cat">Print de Base</li>
+                            <li>2 supports au choix (flyers, menu, affiche, carte de visite)</li>
+                        </ul>
+                        <a href="https://wa.me/33601490965?text=Bonjour, je suis intéressé par le pack Starter à 1490€" class="pk-btn pk-btn-ghost" target="_blank">Choisir ce pack</a>
+                    </div>
+
+                    <!-- PREMIUM -->
+                    <div class="pack-card feat reveal rd2">
+                        <span class="pk-badge">Populaire</span>
+                        <h3 class="pk-name">Premium</h3>
+                        <p class="pk-target">PME / Commerces établis — Besoin de clients et de trafic</p>
+                        <p class="pk-price">2 990<span class="cur">€</span></p>
+                        <p class="pk-price-sub">ou 890€/mois × 3 mois + 320€ frais de dossier</p>
+                        <ul class="pk-feats">
+                            <li class="pk-cat">Branding Complet</li>
+                            <li>Logo + Charte graphique complète</li>
+                            <li>Déclinaisons (réseaux sociaux, email, documents)</li>
+                            <li class="pk-cat">Site Web Optimisé SEO</li>
+                            <li>Site 8 pages optimisé pour le référencement</li>
+                            <li>Intégration réseaux sociaux + Blog intégré</li>
+                            <li class="pk-cat">SEO (3 mois)</li>
+                            <li>Audit technique (20 points)</li>
+                            <li>Optimisation 5 pages clés + 20 mots-clés</li>
+                            <li>4 articles/mois (500 mots)</li>
+                            <li class="pk-cat">Print Premium</li>
+                            <li>5 supports au choix (menus, flyers, affiches, cartes, devantures)</li>
+                        </ul>
+                        <a href="https://wa.me/33601490965?text=Bonjour, je suis intéressé par le pack Premium à 2990€" class="pk-btn pk-btn-fill" target="_blank">Choisir ce pack</a>
+                    </div>
+
+                    <!-- ULTIMATE -->
+                    <div class="pack-card reveal rd3">
+                        <span class="pk-badge">Ultimate</span>
+                        <h3 class="pk-name">Ultimate</h3>
+                        <p class="pk-target">Entreprises qui veulent scaler — Trafic + Conversions + Ventes</p>
+                        <p class="pk-price">4 990<span class="cur">€</span></p>
+                        <p class="pk-price-sub">ou 890€/mois × 6 mois</p>
+                        <ul class="pk-feats">
+                            <li class="pk-cat">Branding Premium</li>
+                            <li>Identité visuelle complète + Book de marque</li>
+                            <li>Supports print illimités (6 mois)</li>
+                            <li class="pk-cat">Site E-Commerce</li>
+                            <li>Site Shopify (20 produits)</li>
+                            <li>Tunnel de vente optimisé + Paiement sécurisé</li>
+                            <li class="pk-cat">SEO + SEA (6 mois)</li>
+                            <li>SEO complet (audit + optimisation + 8 articles/mois)</li>
+                            <li>Campagnes Google Ads + Meta Ads (gestion + optimisation)</li>
+                            <li>Budget pub géré : 500–2000€/mois (hors budget agence)</li>
+                            <li class="pk-cat">Montage Vidéo</li>
+                            <li>4 vidéos/mois (réels, stories, pubs)</li>
+                            <li class="pk-cat">Stratégie Réseaux Sociaux</li>
+                            <li>Calendrier éditorial (6 mois) + ligne éditoriale + templates Canva</li>
+                        </ul>
+                        <a href="https://wa.me/33601490965?text=Bonjour, je suis intéressé par le pack Ultimate à 4990€" class="pk-btn pk-btn-ghost" target="_blank">Choisir ce pack</a>
+                    </div>
+                </div>
+
+                <div class="pack-discount reveal" style="margin-top:40px;">
+                    <p><strong>-10%</strong> sur engagement 6 mois &nbsp;•&nbsp; <strong>-15%</strong> sur engagement 12 mois</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TARIFS À LA CARTE ===== -->
+        <section id="tarifs">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">À la carte</span>
+                    <h2 class="sec-title">Tarifs par <span class="grad-text">services</span></h2>
+                    <p class="sec-sub">Besoin d'un service précis ? Voici nos prix unitaires.</p>
+                    <div class="divider"></div>
+                </div>
+                <div class="pricing-wrap reveal">
+                    <table class="pricing-tbl">
+                        <thead><tr><th>Service</th><th>Détails</th><th>Tarif</th></tr></thead>
+                        <tbody>
+                            <tr><td><div class="sn">1 Flyer</div></td><td><span class="sd">Visuel professionnel story ou print</span></td><td><span class="ptag">30€</span></td></tr>
+                            <tr><td><div class="sn">Pack 3 Flyers</div></td><td><span class="sd">3 visuels différents — meilleur rapport qualité/prix</span></td><td><span class="ptag">75€</span></td></tr>
+                            <tr><td><div class="sn">Pack 8 Flyers</div></td><td><span class="sd">8 visuels pour couvrir vos promos du mois</span></td><td><span class="ptag">200€</span></td></tr>
+                            <tr><td><div class="sn">Flyer Design Premium</div></td><td><span class="sd">Création ultra-travaillée, retouches avancées</span></td><td><span class="ptag">50–100€</span></td></tr>
+                            <tr><td><div class="sn">Logo seul</div></td><td><span class="sd">3 propositions + fichiers sources</span></td><td><span class="ptag">350€</span></td></tr>
+                            <tr><td><div class="sn">Charte Graphique</div></td><td><span class="sd">Couleurs, typos, déclinaisons</span></td><td><span class="ptag">450€</span></td></tr>
+                            <tr><td><div class="sn">Site vitrine (5 pages)</div></td><td><span class="sd">Design + développement responsive</span></td><td><span class="ptag">990€</span></td></tr>
+                            <tr><td><div class="sn">Site e-commerce</div></td><td><span class="sd">Shopify / WooCommerce complet</span></td><td><span class="ptag">1 990€</span></td></tr>
+                            <tr><td><div class="sn">Carte NFC Google Avis</div></td><td><span class="sd">Carte programmée avec lien Google de votre commerce</span></td><td><span class="ptag">30–50€</span></td></tr>
+                            <tr><td><div class="sn">QR Code Design</div></td><td><span class="sd">QR code stylisé aux couleurs de votre marque</span></td><td><span class="ptag">15–30€</span></td></tr>
+                            <tr><td><div class="sn">Google My Business</div></td><td><span class="sd">Création et optimisation complète de votre fiche</span></td><td><span class="ptag">50–200€</span></td></tr>
+                            <tr><td><div class="sn">Menu restaurant</div></td><td><span class="sd">Menu complet avec design professionnel</span></td><td><span class="ptag">150–200€</span></td></tr>
+                            <tr><td><div class="sn">Carte de visite</div></td><td><span class="sd">Design professionnel recto/verso</span></td><td><span class="ptag">20–50€</span></td></tr>
+                            <tr><td><div class="sn">Plaquette commerciale</div></td><td><span class="sd">Document présentant vos services</span></td><td><span class="ptag">50€</span></td></tr>
+                            <tr><td><div class="sn">Facture design</div></td><td><span class="sd">Modèle professionnel et esthétique</span></td><td><span class="ptag">20–50€</span></td></tr>
+                            <tr><td><div class="sn">Audit SEO</div></td><td><span class="sd">Analyse technique complète de votre site</span></td><td><span class="ptag">290€</span></td></tr>
+                            <tr><td><div class="sn">Articles SEO (pack 10)</div></td><td><span class="sd">Contenus optimisés pour le référencement</span></td><td><span class="ptag">490€</span></td></tr>
+                            <tr><td><div class="sn">Campagne Google Ads</div></td><td><span class="sd">Setup + 1 mois de gestion</span></td><td><span class="ptag">690€</span></td></tr>
+                            <tr><td><div class="sn">Campagne Meta Ads</div></td><td><span class="sd">Setup + 1 mois de gestion</span></td><td><span class="ptag">590€</span></td></tr>
+                            <tr><td><div class="sn">Montage vidéo (1 vidéo)</div></td><td><span class="sd">Réels, stories ou pubs</span></td><td><span class="ptag">150€</span></td></tr>
+                            <tr><td><div class="sn">Photos produits IA</div></td><td><span class="sd">Visuels produits haute qualité générés par IA</span></td><td><span class="ptag">30–50€</span></td></tr>
+                            <tr><td><div class="sn">Packaging / Mockup</div></td><td><span class="sd">Mise en scène réaliste de vos produits</span></td><td><span class="ptag">50–100€</span></td></tr>
+                            <tr><td><div class="sn">Visuel publicitaire (Ads)</div></td><td><span class="sd">Pour campagnes Facebook/Instagram</span></td><td><span class="ptag">30–100€</span></td></tr>
+                            <tr><td><div class="sn">Stratégie réseaux sociaux</div></td><td><span class="sd">Calendrier éditorial + ligne éditoriale + templates</span></td><td><span class="ptag">490€</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== POURQUOI NOUS ===== -->
+        <section class="why-section" id="pourquoi">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-label">Nos engagements</span>
+                    <h2 class="sec-title">Pourquoi choisir <span class="grad-text">Maison Séphira 733</span> ?</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="why-grid">
+                    <div class="why-card reveal rd1"><div class="why-ico">🤝</div><h3>Accompagnement personnalisé</h3><p>Nous prenons le temps de comprendre votre projet et vos objectifs avant de proposer une solution sur-mesure.</p></div>
+                    <div class="why-card reveal rd2"><div class="why-ico">📊</div><h3>Résultats mesurables</h3><p>Reportings clairs pour suivre l'impact de nos actions : trafic, conversions, ROI.</p></div>
+                    <div class="why-card reveal rd3"><div class="why-ico">⚡</div><h3>Réactivité</h3><p>Délais respectés, communication fluide, disponibilité totale pour répondre à vos questions.</p></div>
+                    <div class="why-card reveal rd4"><div class="why-ico">🔍</div><h3>Transparence totale</h3><p>Pas de frais cachés. Vous savez exactement ce que vous payez et ce que vous recevez.</p></div>
+                    <div class="why-card reveal rd5"><div class="why-ico">🎯</div><h3>Expertise multi-services</h3><p>Branding, flyers, sites web, SEO, publicité, vidéo, NFC… Tout en un seul endroit.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA FINAL ===== -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <div class="cta-content reveal">
+                    <h2 class="cta-title">Vous c'est nous,<br>c'est <span class="grad-text">best parteners</span></h2>
+                    <p class="cta-sub">733 comme à la maison</p>
+                    <div class="cta-btns">
+                        <a href="https://wa.me/33601490965" class="btn-wa" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Contactez-nous sur WhatsApp
+                        </a>
+                        <a href="https://wa.me/33601490965?text=Bonjour, je souhaite un devis détaillé pour mes besoins." class="btn-p" target="_blank">Demander un devis détaillé →</a>
+                    </div>
+                    <p style="margin-top:24px; color:var(--gray-300); font-size:1.1rem;">+33 6 01 49 09 65</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-logo"><img src="https://www.genspark.ai/api/files/s/koiPwmMn" alt="Maison Sephira 733"></div>
+                    <p class="footer-txt">© 2024 Maison Séphira 733. Tous droits réservés.</p>
+                    <ul class="footer-links">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#flyer-packs">Flyers</a></li>
+                        <li><a href="#packs">Packs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Scroll Reveal
+        const revEls = document.querySelectorAll('.reveal');
+        const revObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revEls.forEach(el => revObs.observe(el));
+
+        // Navbar scroll
+        const nav = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            nav.style.padding = window.scrollY > 100 ? '10px 0' : '16px 0';
+            nav.style.background = window.scrollY > 100 ? 'rgba(8,8,15,.92)' : 'rgba(8,8,15,.7)';
+        });
+
+        // Particles canvas
+        const cvs = document.getElementById('particles-canvas');
+        const ctx = cvs.getContext('2d');
+        let pts = [], mx = 0, my = 0;
+
+        function rCvs() { cvs.width = innerWidth; cvs.height = innerHeight; }
+        rCvs(); addEventListener('resize', rCvs);
+        addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+        class P {
+            constructor() { this.r(); }
+            r() {
+                this.x = Math.random() * cvs.width;
+                this.y = Math.random() * cvs.height;
+                this.s = Math.random() * 2.5 + .5;
+                this.sx = (Math.random() - .5) * .4;
+                this.sy = (Math.random() - .5) * .4;
+                this.o = Math.random() * .4 + .05;
+                this.h = Math.random() > .5 ? 270 : 220;
+                this.l = Math.random() * 300 + 200;
+                this.ml = this.l;
+            }
+            u() {
+                this.x += this.sx; this.y += this.sy; this.l--;
+                const dx = this.x - mx, dy = this.y - my, d = Math.sqrt(dx*dx+dy*dy);
+                if (d < 120) { const f = (120-d)/120*.3; this.x += dx/d*f; this.y += dy/d*f; }
+                if (this.l <= 0 || this.x < -10 || this.x > cvs.width+10 || this.y < -10 || this.y > cvs.height+10) this.r();
+            }
+            d() {
+                const fr = this.l < 50 ? this.l/50 : (this.l > this.ml-50 ? (this.ml-this.l)/50 : 1);
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI*2);
+                ctx.fillStyle = `hsla(${this.h},80%,70%,${this.o*fr})`; ctx.fill();
+            }
+        }
+
+        const pCnt = Math.min(80, Math.floor(innerWidth/20));
+        for (let i = 0; i < pCnt; i++) pts.push(new P());
+
+        function anim() {
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            for (let i = 0; i < pts.length; i++) {
+                for (let j = i+1; j < pts.length; j++) {
+                    const dx = pts[i].x-pts[j].x, dy = pts[i].y-pts[j].y, d = Math.sqrt(dx*dx+dy*dy);
+                    if (d < 140) {
+                        ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+                        ctx.strokeStyle = `rgba(157,78,221,${(1-d/140)*.08})`; ctx.lineWidth = .5; ctx.stroke();
+                    }
+                }
+            }
+            pts.forEach(p => { p.u(); p.d(); });
+            requestAnimationFrame(anim);
+        }
+        anim();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Mobile menu
+        const mobBtn = document.getElementById('mobToggle');
+        const navLk = document.querySelector('.nav-links');
+        const navCta = document.querySelector('.nav-cta');
+        if (mobBtn) {
+            mobBtn.addEventListener('click', () => {
+                const open = navLk.style.display === 'flex';
+                if (open) { navLk.style.display = 'none'; navCta.style.display = 'none'; }
+                else {
+                    navLk.style.display = 'flex'; navLk.style.flexDirection = 'column';
+                    navLk.style.position = 'absolute'; navLk.style.top = '100%';
+                    navLk.style.left = '0'; navLk.style.right = '0';
+                    navLk.style.background = 'rgba(8,8,15,.97)'; navLk.style.padding = '24px';
+                    navLk.style.gap = '16px'; navLk.style.borderBottom = '1px solid rgba(255,255,255,.05)';
+                    navCta.style.display = 'block';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
